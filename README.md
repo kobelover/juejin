@@ -20,12 +20,21 @@ src为sixgold(sixgold返回数据中有条数，web没有条数)
 
 # 分类说明
 Category.Android    安卓
+
 Category.Frontend	前端
+
 Category.IOS		iOS
+
 Category.Backend	后端
+
 Category.Design		设计
+
 Category.Product	产品
+
 Category.Freebie	工具资源
+
 Category.Article	阅读
+
 Category.AI 		人工智能
+
 Category.All    	所有
