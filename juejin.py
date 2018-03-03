@@ -24,16 +24,13 @@ ARTICLETYPE = {
 }
 
 
-def get_juejin(limit=20, category="all", article_type='hot', src="sixgold"):
-    # src: 'sixgold'   'web'
-    # https://timeline-merger-ms.juejin.im/v1/get_entry_by_rank?src=sixgold&limit=20&category=all
-    url = None
+def get_juejin(limit=20, category=Category.All, article_type='hot', src='sixgold'):
     if article_type == 'hot':
         url = ARTICLETYPE['hot']
     else:
         url = ARTICLETYPE['new']
 
-    req_url = '%s?src=%s&limit=%s&category=%s' % (url, src, limit, category)
+    req_url = '%s?src=%s&limit=%s&category=%s' % (url, src, limit, category.value)
 
     def make_request():
         with urllib.request.urlopen(req_url) as f:
@@ -41,8 +38,7 @@ def get_juejin(limit=20, category="all", article_type='hot', src="sixgold"):
 
     yield from make_request()
 
-
 if __name__ == '__main__':
-    for i in get_juejin():
+    for i in get_juejin(limit=5, category=Category.AI, article_type='new', src='sixgold'):
         print(i.decode('utf-8'))
         print("\n")
